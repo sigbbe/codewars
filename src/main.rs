@@ -27,7 +27,7 @@ fn main() {
 use std::collections::HashMap;
 
 fn codewars_01_07_2021() {
-    #[allow(unused_import)]
+    #[allow(unused_imports)]
     use _01_07_2021::algo::*;
     println!("{:?}", "ldsfkølsdkf");
 }
