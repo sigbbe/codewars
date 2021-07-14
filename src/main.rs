@@ -18,23 +18,30 @@ mod _01_07_2021 {
     pub mod phone_directory;
 }
 
+mod _13_07_2021 {
+    pub mod anagram;
+    pub mod array_diff;
+    pub mod callback;
+    pub mod fibo_akin;
+    pub mod stop_gninnips_my_sdrow;
+}
+
 fn main() {
     codewars_29_06_2021();
     codewars_30_06_2021();
     codewars_01_07_2021();
+    codewars_13_07_2021();
 }
-
-use std::collections::HashMap;
 
 fn codewars_01_07_2021() {
     #[allow(unused_imports)]
     use _01_07_2021::algo::*;
-    println!("{:?}", "ldsfkølsdkf");
 }
 
 fn codewars_30_06_2021() {
     // rgb_to_hex_conversion
     {
+        use std::collections::HashMap;
         type RGB = (i32, i32, i32);
         let mut answers: HashMap<RGB, String> = HashMap::new();
         answers.insert((255, 255, 255), "FFFFFF".to_string());
@@ -68,8 +75,7 @@ fn codewars_30_06_2021() {
     }
     // n_queens_problem
     {
-        use _30_06_2021::n_queens_problem::main;
-        main();
+        // _30_06_2021::n_queens_problem::main();
     }
 }
 
@@ -108,4 +114,12 @@ fn codewars_29_06_2021() {
             assert_eq!(t.1, _29_06_2021::build_a_pile_of_cubes::find_nb(t.0) as i32);
         }
     }
+}
+
+fn codewars_13_07_2021() {
+    _13_07_2021::anagram::tests::sample_tests();
+    _13_07_2021::stop_gninnips_my_sdrow::run();
+    _13_07_2021::fibo_akin::run();
+    _13_07_2021::array_diff::run();
+    // _13_07_2021::callback::run();
 }

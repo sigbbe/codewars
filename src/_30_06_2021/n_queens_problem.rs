@@ -31,6 +31,9 @@ pub struct NQueensPuzzle {
     board: Vec<bool>,
     n: usize,
 }
+use std::collections::hash_map::RandomState;
+use std::collections::HashSet;
+use std::iter::FromIterator;
 
 impl NQueensPuzzle {
     #[allow(dead_code)]
@@ -53,9 +56,13 @@ impl NQueensPuzzle {
                 .take(n)
                 .collect::<Vec<f32>>()
                 .iter()
-                .map(|v| (v * (n * n) as f32).round() as u32)
+                .map(|v| {
+                    let n_squared = n * n;
+                    (v * n_squared as f32).floor() as u32
+                })
                 .collect::<Vec<u32>>();
-            if v.len() == n {
+            let set: HashSet<u32, RandomState> = HashSet::from_iter(v.iter().cloned());
+            if set.len() == n {
                 return v;
             }
         }
@@ -77,7 +84,7 @@ impl NQueensPuzzle {
         let mut arr = s.split("\n").into_iter().map(|v| v).collect::<Vec<&str>>();
         arr = arr[1..arr.len()].to_vec();
         for item in arr.iter() {
-            println!("{:?}", item);
+            println!("{}", item);
         }
     }
 
@@ -141,8 +148,8 @@ trait Printable<T: ToString + Display + Debug> {
 
 #[allow(dead_code)]
 pub fn main() {
-    let q = NQueensPuzzle::new(3);
-    q.print_table();
+    let _q = NQueensPuzzle::new(8);
+    // q.print_table();
 }
 
 pub mod sigbbe {
