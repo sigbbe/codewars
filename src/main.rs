@@ -7,9 +7,8 @@ mod _29_06_2021 {
 }
 
 mod _30_06_2021 {
-    pub mod rgb_to_hex_conversion;
-    // pub mod which_are_in;
     pub mod n_queens_problem;
+    pub mod rgb_to_hex_conversion;
     pub mod tortoise_racing;
 }
 
@@ -26,18 +25,26 @@ mod _13_07_2021 {
     pub mod stop_gninnips_my_sdrow;
 }
 
-fn main() {
-    codewars_29_06_2021();
-    codewars_30_06_2021();
-    codewars_01_07_2021();
-    codewars_13_07_2021();
+mod _14_07_2021 {
+    pub mod if_you_can_read_this;
+    pub mod molecule_to_atoms;
 }
 
+fn main() {
+    // codewars_29_06_2021();
+    // codewars_30_06_2021();
+    // codewars_01_07_2021();
+    // codewars_13_07_2021();
+    codewars_14_07_2021();
+}
+
+#[allow(dead_code)]
 fn codewars_01_07_2021() {
     #[allow(unused_imports)]
     use _01_07_2021::algo::*;
 }
 
+#[allow(dead_code)]
 fn codewars_30_06_2021() {
     // rgb_to_hex_conversion
     {
@@ -62,23 +69,17 @@ fn codewars_30_06_2021() {
             assert_eq!(*expected, result);
         }
     }
-    // which_are_in
-    {
-        // let a1 = ["arp", "live", "strong"];
-        // let a2 = ["lively", "alive", "harp", "sharp", "armstrong"];
-        // let res: Vec<String> = _30_06_2021::which_are_in::in_array(&a1, &a2);
-        // println!("{:?}", res);
-    }
     // tortoise_racing
     {
-        // println!("{:?}", _30_06_2021::tortoise_racing::race(80, 91, 37));
+        println!("{:?}", _30_06_2021::tortoise_racing::race(80, 91, 37));
     }
     // n_queens_problem
     {
-        // _30_06_2021::n_queens_problem::main();
+        _30_06_2021::n_queens_problem::main();
     }
 }
 
+#[allow(dead_code)]
 fn codewars_29_06_2021() {
     // // multiple_of_3_or_5
     {
@@ -116,10 +117,16 @@ fn codewars_29_06_2021() {
     }
 }
 
+#[allow(dead_code)]
 fn codewars_13_07_2021() {
     _13_07_2021::anagram::tests::sample_tests();
     _13_07_2021::stop_gninnips_my_sdrow::run();
     _13_07_2021::fibo_akin::run();
     _13_07_2021::array_diff::run();
-    // _13_07_2021::callback::run();
+    _13_07_2021::callback::run();
+}
+
+fn codewars_14_07_2021() {
+    // _14_07_2021::if_you_can_read_this::run();
+    _14_07_2021::molecule_to_atoms::run();
 }

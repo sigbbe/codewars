@@ -135,15 +135,15 @@ pub fn run() {
         callback_processor: Processor::new(test_array_diff_with_iterator),
         runtimes: Vec::new(),
     };
-    // timer.process_events();
-    // timer.process_events();
-    // timer.process_events();
-    // timer.process_events();
-    // timer.process_events();
-    // timer.process_events();
-    // timer.process_events();
-    // timer.process_events();
-    // timer.process_events();
+    timer.process_events();
+    timer.process_events();
+    timer.process_events();
+    timer.process_events();
+    timer.process_events();
+    timer.process_events();
+    timer.process_events();
+    timer.process_events();
+    timer.process_events();
     println!("Average time: {:?}", timer.average_runtime());
     println!("Number of callbacks: {:?}", timer.number_of_calls());
     timer.set_callback(test_array_diff_with_loop);
