@@ -9,7 +9,7 @@
 // indexes of the elements start from 1 (not 0).
 
 #[allow(unused_imports)]
-use crate::_29_06_2021::typed::type_name::Typed;
+use crate::cw_29_06_2021::typed::type_name::Typed;
 
 #[allow(dead_code)]
 pub fn iq_test(input: &str) -> u64 {
