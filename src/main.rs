@@ -30,12 +30,20 @@ mod _14_07_2021 {
     pub mod molecule_to_atoms;
 }
 
+mod _17_07_2021 {
+    pub mod snail;
+    pub mod is_my_friend_cheating;
+    pub mod factorial_tail;
+    pub mod mix;
+}
+
 fn main() {
     // codewars_29_06_2021();
     // codewars_30_06_2021();
     // codewars_01_07_2021();
     // codewars_13_07_2021();
-    codewars_14_07_2021();
+    // codewars_14_07_2021();
+    codewars_17_07_2021();
 }
 
 #[allow(dead_code)]
@@ -126,7 +134,16 @@ fn codewars_13_07_2021() {
     _13_07_2021::callback::run();
 }
 
+#[allow(dead_code)]
 fn codewars_14_07_2021() {
-    // _14_07_2021::if_you_can_read_this::run();
+    _14_07_2021::if_you_can_read_this::run();
     _14_07_2021::molecule_to_atoms::run();
+}
+
+#[allow(dead_code)]
+fn codewars_17_07_2021() {
+    // _17_07_2021::snail::run();
+    // _17_07_2021::is_my_friend_cheating::run();
+    // _17_07_2021::factorial_tail::run();
+    _17_07_2021::mix::run();
 }

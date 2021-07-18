@@ -68,17 +68,14 @@ pub fn parse_molecule(s: &str) -> Result<Molecule, ParseError> {
         // for
         // molecule.push(value: T)
     }
-    println!(
-        "{:?}",
-        vec_index_of_element(&split_all_chars, &"O".to_string())
-    );
+    // println!("{:?}", vec_index_of_element(&split_all_chars, &"O".to_string()));
     for _i in split_all_chars {}
     Ok(molecule)
 }
 
-fn vec_index_of_element<T: PartialEq>(vec: &Vec<T>, t: &T) -> usize {
-    let i = vec.iter().position(|r| r.eq(t)).unwrap_or_default();
-}
+// fn vec_index_of_element<T: PartialEq>(vec: &Vec<T>, t: &T) -> usize {
+//     let i = vec.iter().position(|r| r.eq(t)).unwrap_or_default();
+// }
 
 use std::default::Default;
 use std::hash::BuildHasher;
@@ -183,6 +180,7 @@ fn get_column_as_vec(file: &str, column: &str) -> Result<Vec<String>, Box<dyn Er
 #[allow(unused_imports)]
 use meval::eval_str;
 
+#[allow(dead_code)]
 pub fn run() {
     // water // Ok([("H", 2), ("O", 1)])
     // println!("{:?}", parse_molecule("H2O"));
