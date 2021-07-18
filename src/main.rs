@@ -37,7 +37,7 @@ mod cw_17_07_2021 {
     pub mod mix;
 }
 mod cw_18_07_2021 {
-    pub mod snail;
+    pub mod range_extraction;
 }
 
 fn main() {
@@ -131,27 +131,32 @@ fn codewars_29_06_2021() {
 
 #[allow(dead_code)]
 fn codewars_13_07_2021() {
-    cw_13_07_2021::anagram::tests::sample_tests();
-    cw_13_07_2021::stop_gninnips_my_sdrow::run();
-    cw_13_07_2021::fibo_akin::run();
-    cw_13_07_2021::array_diff::run();
-    cw_13_07_2021::callback::run();
+    use cw_13_07_2021::*;
+    anagram::tests::sample_tests();
+    stop_gninnips_my_sdrow::run();
+    fibo_akin::run();
+    array_diff::run();
+    callback::run();
 }
 
 #[allow(dead_code)]
 fn codewars_14_07_2021() {
-    cw_14_07_2021::if_you_can_read_this::run();
-    cw_14_07_2021::molecule_to_atoms::run();
+    use cw_14_07_2021::*;
+    if_you_can_read_this::run();
+    molecule_to_atoms::run();
 }
 
 #[allow(dead_code)]
 fn codewars_17_07_2021() {
-    cw_17_07_2021::snail::run();
-    cw_17_07_2021::is_my_friend_cheating::run();
-    cw_17_07_2021::factorial_tail::run();
-    cw_17_07_2021::mix::run();
+    use cw_17_07_2021::*;
+    snail::run();
+    is_my_friend_cheating::run();
+    factorial_tail::run();
+    mix::run();
 }
 
+#[allow(dead_code)]
 fn codewars_18_07_2021() {
     use cw_18_07_2021::*;
+    range_extraction::run();
 }
