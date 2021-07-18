@@ -32,69 +32,34 @@ fn mix(s1: &str, s2: &str) -> String {
         let el: (char, char, usize) = (from_which_string_and_count.0, *unique_char, from_which_string_and_count.1);
         res_vec.push(el);
     }
-    if res_vec.len() < 1 {
-        return "".to_string()
-    }
-    // res_vec.sort_by(|a, b| my_scuffed_sorting_algorithm(*a, *b));
-    println!("{}", res_vec.len());
-    let mut pop_index = {
-        if 1 >= res_vec.len() {
-            0
-        } else {
-            res_vec.len() - 1
-        }
-    };
-    while res_vec[pop_index].2 <= 1 {
-        res_vec.pop();
-        pop_index = {
-            if 0 >= res_vec.len() {
-                break;
-                } else {
-                res_vec.len() - 1
-            }
-        };
-    };
     res_vec.sort_by(|a, b| my_scuffed_sorting_algorithm(*a, *b));
-    println!("{:?}", res_vec);
     let res_str = res_vec.iter().map(|(s, c, n)| to_mix_substring(*s, *c, *n)).collect::<String>();
-    res_str[0..res_str.len() - 1].to_string()
+    if &res_str != "" {
+        res_str[0..res_str.len() - 1].to_string()
+    } else {
+        "".to_string()
+    }
 }
 
+#[allow(dead_code)]
 fn my_scuffed_sorting_algorithm(a: (char, char, usize), b: (char, char, usize))-> Ordering {
-    let cmp = b.2.partial_cmp(&a.2).unwrap();
-    match cmp {
-        Ordering::Equal => {
-            let t = match (a.0, b.0) {
-                (_a, _b ) if (_a == '1') & (_b == '1') => Ordering::Equal,
-                (_a, _b ) if (_a == '1') & (_b == '2') => Ordering::Less,
-                (_a, _b ) if (_a == '1') & (_b == '=') => Ordering::Less,
-                (_a, _b ) if (_a == '2') & (_b == '1') => Ordering::Greater,
-                (_a, _b ) if (_a == '2') & (_b == '2') => Ordering::Equal,
-                (_a, _b ) if (_a == '2') & (_b == '=') => Ordering::Less,
-                (_a, _b ) if (_a == '=') & (_b == '1') => Ordering::Greater,
-                (_a, _b ) if (_a == '=') & (_b == '2') => Ordering::Greater,
-                (_a, _b ) if (_a == '=') & (_b == '=') => Ordering::Equal,
-                _ => Ordering::Less,
-            };
-            if t != Ordering::Equal {
-                t
-            } else {
-                let some = {if (a.0 == '=') & (b.0 != '=') {
-                    Ordering::Greater
-                } else if (a.0 != '=') & (b.0 == '=') {
-                    // println!("A={}, B={}, Res={:?}", a.1, b.1, a.1.partial_cmp(&b.1).unwrap());
-                    Ordering::Less
-                } else {
-                    // a.1.partial_cmp(&b.1).unwrap()
-                    // println!("A={}, B={}", a.1, b.1);
-                    a.1.partial_cmp(&b.1).unwrap()
-                }};
-                // println!("A={}, B={}, Res={:?}", a.1, b.1, some);
-                some
-            }
-        }, 
-        _ => cmp
+    // Sort on number of occurrences
+    let cmp_count = b.2.partial_cmp(&a.2).unwrap();
+    if cmp_count != Ordering::Equal {
+        return cmp_count;
     }
+    // Sort on which string the char comes from
+    let a_from_which_string = a.0.to_digit(10).unwrap_or(3) as i32;
+    let b_from_which_string = b.0.to_digit(10).unwrap_or(3) as i32;
+    if b_from_which_string - a_from_which_string > 0 {
+        return Ordering::Less;
+    }
+    if b_from_which_string - a_from_which_string < 0 {
+        return Ordering::Greater;
+    }
+    // Sort lexicographically on the given chars
+    let cmp_char = a.1.partial_cmp(&b.1).unwrap();
+    cmp_char
 }
 
 #[allow(dead_code)]
@@ -111,15 +76,25 @@ fn to_mix_substring(found_in_string: char, character: char, count: usize) -> Str
     }
 }
 
+#[allow(dead_code)]
+fn ordering_to_string(o: Ordering) -> String {
+    match o {
+        Ordering::Equal => "=".to_string(), 
+        Ordering::Greater => ">".to_string(), 
+        Ordering::Less => "<".to_string() 
+    }
+}
 
 #[allow(dead_code)]
 pub fn run() {
-    // let s1 = "my&friend&Paul has heavy ats! &";
-    // let s2 = "my friend John has many many friends &";
-    let s3 = "Are they here";
-    let s4 = "yes, they are here";
-    let res = mix(s3, s4);
-    println!("{}", res);
+    let s_1 = "my&friend&Paul has heavy ats! &";
+    let s_2 = "my friend John has many many friends &";
+    let s_3 = "Are they here";
+    let s_4 = "yes, they are here";
+    let res_0 = mix(s_1, s_2);
+    let res_1 = mix(s_3, s_4);
+    println!("{}", res_0);
+    println!("{}", res_1);
 }
 
 #[cfg(test)]
