@@ -38,6 +38,8 @@ mod cw_17_07_2021 {
 }
 mod cw_18_07_2021 {
     pub mod range_extraction;
+    pub mod count_ip_addresses;
+    pub mod common_denominator;
 }
 
 fn main() {
@@ -158,5 +160,7 @@ fn codewars_17_07_2021() {
 #[allow(dead_code)]
 fn codewars_18_07_2021() {
     use cw_18_07_2021::*;
-    range_extraction::run();
+    // range_extraction::run();
+    // count_ip_addresses::run();
+    common_denominator::run();
 }
