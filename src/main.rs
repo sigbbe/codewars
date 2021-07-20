@@ -40,6 +40,7 @@ mod cw_18_07_2021 {
     pub mod range_extraction;
     pub mod count_ip_addresses;
     pub mod common_denominator;
+    pub mod next_bigger_number_with_same_digits;
 }
 
 fn main() {
@@ -162,5 +163,6 @@ fn codewars_18_07_2021() {
     use cw_18_07_2021::*;
     // range_extraction::run();
     // count_ip_addresses::run();
-    common_denominator::run();
+    // common_denominator::run();
+    next_bigger_number_with_same_digits::run();
 }
