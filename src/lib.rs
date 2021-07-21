@@ -7,7 +7,7 @@ use std::iter::FromIterator;
 use std::vec::Vec;
 
 #[allow(dead_code)]
-pub fn vec_unique_elements<T: Eq + Hash + Copy>(v: Vec<T>) -> Vec<T> {
+pub fn remove_duplicates<T: Eq + Hash + Copy>(v: Vec<T>) -> Vec<T> {
     // Vec -> HashSet 
     // Vec <- HashSet 
     HashSet::<T, RandomState>::from_iter(v.iter().cloned()).into_iter().collect::<Vec<T>>()
@@ -45,5 +45,16 @@ pub fn permutation<T: Copy>(v: Vec<T>) -> Vec<Vec<T>> {
             }
         }
         l
+    }
+}
+
+pub mod print_hello {
+    use std::env::args;
+    use std::env::current_dir;
+
+    #[allow(dead_code)]
+    pub fn get_file_name() {
+        println!("{:?}", current_dir().unwrap());
+        println!("{:?}", args());
     }
 }

@@ -49,6 +49,10 @@ mod cw_20_07_2021 {
     pub mod street_fighter_2_character_selection_part_2;
 }
 
+mod cw_21_07_2021 {
+    pub mod getting_along_with_integer_partitions;
+}
+
 mod lib;
 #[allow(unused_imports)]
 use lib::*;
@@ -61,7 +65,8 @@ fn main() {
     // codewars_14_07_2021();
     // codewars_17_07_2021();
     // codewars_18_07_2021();
-    codewars_20_07_2021();
+    // codewars_20_07_2021();
+    codewars_21_07_2021();
 }
 
 #[allow(dead_code)]
@@ -178,8 +183,16 @@ fn codewars_18_07_2021() {
     next_bigger_number_with_same_digits::run();
 }
 
+#[allow(dead_code)]
 fn codewars_20_07_2021() {
     use cw_20_07_2021::*;
-    // street_fighter_2_character_selection::run();
+    street_fighter_2_character_selection::run();
     street_fighter_2_character_selection_part_2::run();
 }
+
+#[allow(dead_code)]
+fn codewars_21_07_2021() {
+    use cw_21_07_2021::*;
+    getting_along_with_integer_partitions::run();
+}
+
