@@ -36,12 +36,22 @@ mod cw_17_07_2021 {
     pub mod factorial_tail;
     pub mod mix;
 }
+
 mod cw_18_07_2021 {
     pub mod range_extraction;
     pub mod count_ip_addresses;
     pub mod common_denominator;
     pub mod next_bigger_number_with_same_digits;
 }
+
+mod cw_20_07_2021 {
+    pub mod street_fighter_2_character_selection;
+    pub mod street_fighter_2_character_selection_part_2;
+}
+
+mod lib;
+#[allow(unused_imports)]
+use lib::*;
 
 fn main() {
     // codewars_29_06_2021();
@@ -50,7 +60,8 @@ fn main() {
     // codewars_13_07_2021();
     // codewars_14_07_2021();
     // codewars_17_07_2021();
-    codewars_18_07_2021();
+    // codewars_18_07_2021();
+    codewars_20_07_2021();
 }
 
 #[allow(dead_code)]
@@ -161,8 +172,14 @@ fn codewars_17_07_2021() {
 #[allow(dead_code)]
 fn codewars_18_07_2021() {
     use cw_18_07_2021::*;
-    // range_extraction::run();
-    // count_ip_addresses::run();
-    // common_denominator::run();
+    range_extraction::run();
+    count_ip_addresses::run();
+    common_denominator::run();
     next_bigger_number_with_same_digits::run();
+}
+
+fn codewars_20_07_2021() {
+    use cw_20_07_2021::*;
+    // street_fighter_2_character_selection::run();
+    street_fighter_2_character_selection_part_2::run();
 }

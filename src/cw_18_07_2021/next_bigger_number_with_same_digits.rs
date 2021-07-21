@@ -1,4 +1,6 @@
 mod bruteforce {
+    use super::*;
+
     #[allow(dead_code)]
     pub fn next_bigger_number(n: i64) -> i64 {
         let mut all_perm = vec_unique_elements(all_permutations(n));
@@ -11,54 +13,6 @@ mod bruteforce {
             }
         }
         -1
-    }
-    
-    #[allow(dead_code)]
-    pub fn all_permutations(n: i64) -> Vec<i64> {
-        permutation(n.to_string().chars().collect::<Vec<char>>()).iter().map(|v| String::from_iter(v).parse::<i64>().unwrap()).collect::<Vec<i64>>()
-    }
-    
-    use std::collections::HashSet;
-    use std::collections::hash_map::RandomState;
-    use std::iter::FromIterator;
-    use std::cmp::Eq;
-    use std::hash::Hash;
-    
-    #[allow(dead_code)]
-    pub fn permutation<T: Copy>(v: Vec<T>) -> Vec<Vec<T>> {
-        let k = v.len();
-        if k < 2 {
-            vec![v]
-        } else {
-            let mut l: Vec<Vec<T>> = Vec::new();
-            for i in 0..k {
-                let m: T = v[i];
-                let mut before_m = v[0..i].to_vec();
-                let mut after_m = v[i + 1..k].to_vec();
-                before_m.append(&mut after_m);
-                for p in permutation(before_m).iter_mut() {
-                    let mut tmp: Vec<T> = p.clone();
-                    tmp.push(m);
-                    exchange(&mut tmp, 0, p.len());
-                    l.push(tmp);
-                }
-            }
-            l
-        }
-    }
-    
-    #[allow(dead_code)]
-    pub fn vec_unique_elements<T: Eq + Hash + Copy>(v: Vec<T>) -> Vec<T> {
-        // Vec -> HashSet 
-        // Vec <- HashSet 
-        HashSet::<T, RandomState>::from_iter(v.iter().cloned()).into_iter().collect::<Vec<T>>()
-    } 
-    
-    #[allow(dead_code)]
-    pub fn exchange<T: Copy>(vec: &mut Vec<T>, i: usize, j: usize) {
-        let tmp = vec[i];
-        vec[i] = vec[j];
-        vec[j] = tmp;
     }
 }
 
@@ -99,6 +53,13 @@ mod solution {
 
 use std::iter::FromIterator;
 
+use codewars::vec_unique_elements;
+use codewars::all_permutations;
+#[allow(unused_imports)]
+use codewars::exchange;
+#[allow(unused_imports)]
+use codewars::permutation;
+
 #[allow(dead_code)]
 fn next_bigger_number(_n: i64) -> i64 {
     let n_str = _n.to_string();
@@ -110,10 +71,9 @@ fn next_bigger_number(_n: i64) -> i64 {
         for i in 2..=k {
             let i_last_digits_chars: Vec<char> = chars[k - i..k].to_vec();
             let num_last_i_digits: i64 = String::from_iter(i_last_digits_chars).parse::<i64>().unwrap();
-            let mut permutations_of_last_digits: Vec<i64> = bruteforce::vec_unique_elements(bruteforce::all_permutations(num_last_i_digits));
+            let mut permutations_of_last_digits: Vec<i64> = vec_unique_elements(all_permutations(num_last_i_digits));
             permutations_of_last_digits = permutations_of_last_digits.iter().filter(|v| v.to_string().len() == i).map(|v| *v).collect::<Vec<i64>>();
             permutations_of_last_digits.sort();
-            // println!("[{}]\t{:?}: {:?}", i, num_last_i_digits, permutations_of_last_digits);
             let number_of_permutations = permutations_of_last_digits.len();
             if number_of_permutations < 2{
                 continue;
@@ -130,7 +90,6 @@ fn next_bigger_number(_n: i64) -> i64 {
                 } else {
                     return {
                         let mut str_res = String::from_iter(chars[0..k - i].iter());
-                        // println!("\t\t{}", str_res);
                         str_res.push_str(&permutations_of_last_digits[j + 1].to_string());
                         str_res.parse::<i64>().unwrap_or(-1)
                     };
@@ -140,7 +99,6 @@ fn next_bigger_number(_n: i64) -> i64 {
         -1
     }
 }
-
 
 pub fn run() {
     let i: &[i64; 8] = &[12300, 54003, 12234, 513, 2017, 144, 513, 5275513];
