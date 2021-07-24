@@ -53,6 +53,11 @@ mod cw_21_07_2021 {
     pub mod getting_along_with_integer_partitions;
 }
 
+mod cw_24_07_2021 {
+    pub mod human_readable_duration_format;
+    pub mod validate_sudoku;
+}
+
 mod lib;
 #[allow(unused_imports)]
 use lib::*;
@@ -66,7 +71,8 @@ fn main() {
     // codewars_17_07_2021();
     // codewars_18_07_2021();
     // codewars_20_07_2021();
-    codewars_21_07_2021();
+    // codewars_21_07_2021();
+    codewars_24_07_2021();
 }
 
 #[allow(dead_code)]
@@ -196,3 +202,9 @@ fn codewars_21_07_2021() {
     getting_along_with_integer_partitions::run();
 }
 
+#[allow(dead_code)]
+fn codewars_24_07_2021() {
+    use cw_24_07_2021::*;
+    // human_readable_duration_format::run();
+    validate_sudoku::run();
+}
