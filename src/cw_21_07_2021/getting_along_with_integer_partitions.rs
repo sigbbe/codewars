@@ -49,7 +49,7 @@ fn partition_factors(n: i64) -> Vec<i64> {
     let mut n_partitions = integer_partition(n).iter().map(|sub_vec| sub_vec.iter().fold(1, |acc, x| acc * x)).collect::<Vec<i64>>();
     
     // Remove duplicates
-    n_partitions = remove_duplicates(n_partitions);
+    n_partitions = remove_duplicates(&n_partitions);
 
     // Sort the vector
     n_partitions.sort();

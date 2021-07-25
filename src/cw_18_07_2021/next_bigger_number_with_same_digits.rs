@@ -3,7 +3,7 @@ mod bruteforce {
 
     #[allow(dead_code)]
     pub fn next_bigger_number(n: i64) -> i64 {
-        let mut all_perm = remove_duplicates(all_permutations(n));
+        let mut all_perm = remove_duplicates(&all_permutations(n));
         all_perm.sort();
         println!("{:?}", all_perm);
         let k = all_perm.len();
@@ -71,7 +71,7 @@ fn next_bigger_number(_n: i64) -> i64 {
         for i in 2..=k {
             let i_last_digits_chars: Vec<char> = chars[k - i..k].to_vec();
             let num_last_i_digits: i64 = String::from_iter(i_last_digits_chars).parse::<i64>().unwrap();
-            let mut permutations_of_last_digits: Vec<i64> = remove_duplicates(all_permutations(num_last_i_digits));
+            let mut permutations_of_last_digits: Vec<i64> = remove_duplicates(&all_permutations(num_last_i_digits));
             permutations_of_last_digits = permutations_of_last_digits.iter().filter(|v| v.to_string().len() == i).map(|v| *v).collect::<Vec<i64>>();
             permutations_of_last_digits.sort();
             let number_of_permutations = permutations_of_last_digits.len();
