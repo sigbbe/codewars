@@ -11,6 +11,8 @@ struct Sudoku {
     data: Vec<Vec<u32>>
 }
 
+use codewars::remove_duplicates;
+
 #[allow(dead_code)]
 impl Sudoku {
     fn is_valid(&self) -> bool {
@@ -20,6 +22,8 @@ impl Sudoku {
         if n <= 0 || !(n_root.fract() == 0.0) {
             println!("Invalid n: {}", n);
             false
+        } else if n == 1 {
+            true
         } else {
             for row in &self.data {
                 let k = row.len();
@@ -34,30 +38,47 @@ impl Sudoku {
                     }
                 }
             }
-            
-            return true;
+            // return true;
+            let _squares: Vec<Vec<i32>>  = vec![vec![]; n];
+            let n_root_usize = n_root as usize;
+            for i in 0..n_root_usize {
+                let r = i * n;
+                for j in 0..n_root_usize {
+                    let k = j * n_root_usize + r * n_root_usize;
+                    let (y, x) = index_to_sudoku_coord(k, n);
+                    let square = self.data[y..y+n_root as usize].to_vec().iter().map(|r| r[x..x+n_root as usize].to_vec()).fold(vec![], |mut acc, mut x| { acc.append(&mut x); acc });
+                    let square_as_set = remove_duplicates(&square);
+                    if square.len() != square_as_set.len() {
+                        println!("{:?}", (y, x));
+                        println!("{:?}", square);
+                        println!("{:?}", square_as_set);
+                        return false;
+                    }
+                }
+            }
+            true
         }
     }
+}
+
+fn index_to_sudoku_coord(index: usize, n: usize) -> (usize, usize) {
+    let mut index = index;
+    let y = index / n;
+    index %= n;
+    let x = index;
+    (y, x)
 }
 
 #[allow(dead_code)]
 pub fn run() {
     let s = Sudoku{
         data: vec![
-                vec![1,2,3,  4,5,6,  7,8,9],
-                vec![1,2,3,  4,5,6,  7,8,9],
-                vec![1,2,3,  4,5,6,  7,8,9],
-  
-                vec![1,2,3,  4,5,6,  7,8,9],
-                vec![1,2,3,  4,5,6,  7,8,9],
-                vec![1,2,3,  4,5,6,  7,8,9],
-                  
-                vec![1,2,3,  4,5,6,  7,8,9],
-                vec![1,2,3,  4,5,6,  7,8,9],
-                vec![1,2,3,  4,5,6,  7,8,9],
-            ]
+                vec![1,2,1,2],
+                vec![3,4,3,4],
+                vec![1,2,1,2],
+                vec![3,4,3,4]
+            ]    
     };
-
     let v = s.is_valid();
     println!("{}", v);
 }
