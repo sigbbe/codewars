@@ -56,6 +56,8 @@ mod cw_21_07_2021 {
 mod cw_24_07_2021 {
     pub mod human_readable_duration_format;
     pub mod validate_sudoku;
+    pub mod rail_fence_cipher;
+    pub mod make_a_spiral;
 }
 
 mod lib;
@@ -206,5 +208,7 @@ fn codewars_21_07_2021() {
 fn codewars_24_07_2021() {
     use cw_24_07_2021::*;
     // human_readable_duration_format::run();
-    validate_sudoku::run();
+    // validate_sudoku::run();
+    // rail_fence_cipher::run();
+    make_a_spiral::run();
 }

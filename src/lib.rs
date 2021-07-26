@@ -7,7 +7,7 @@ use std::iter::FromIterator;
 use std::vec::Vec;
 
 #[allow(dead_code)]
-pub fn remove_duplicates<T: Eq + Hash + Copy>(v: Vec<T>) -> Vec<T> {
+pub fn remove_duplicates<T: Eq + Hash + Copy>(v: &Vec<T>) -> Vec<T> {
     // Vec -> HashSet 
     // Vec <- HashSet 
     HashSet::<T, RandomState>::from_iter(v.iter().cloned()).into_iter().collect::<Vec<T>>()
